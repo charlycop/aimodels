@@ -1,0 +1,24 @@
+# Ignorer tous les sous-dossiers du dossier Models
+Models/**/
+
+# Mais ne pas ignorer les fichiers dans le dossier Models
+!Models/*
+
+# Ignorer les fichiers liés au système
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de sauvegarde
+*~
+*.bak
+
+# Ignorer les fichiers de compilation Python
+*.pyc
+__pycache__/
+
+# Ignorer les fichiers de logs
+*.log
+
+# Ignorer les fichiers de configuration
+*.env
+*.config
