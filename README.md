@@ -1,5 +1,5 @@
 # AI MODELS EXPLORATION
-Here you can find all models we tried, with a comprehensive python of javascript python to make a quick try.
+Here you can find all models we tried, with a comprehensive python or javascript script to make a quick try.
 
 ## Setting up your linux environment
 
