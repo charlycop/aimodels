@@ -1,5 +1,5 @@
 # AI MODELS EXPLORATION
-Here yyou can find all models we tried, with a comprehensive python of javascript python to make a quick try.
+Here you can find all models we tried, with a comprehensive python of javascript python to make a quick try.
 
 ## Setting up your linux environment
 
@@ -14,4 +14,4 @@ Here yyou can find all models we tried, with a comprehensive python of javascrip
 - `sudo apt-get install git-lfs`
 - `git lfs install` (to initialize in Git)
 
-Now, you are aready to try the models, following the instructions in each REAMDE.md
+Now, you are aready to try the models, following the instructions in each README.md
