@@ -7,7 +7,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_location)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_location)
 
 # Move the model to GPU
-device = torch.device("cpu")
+device = torch.device("cuda")
 
 model.to(device)
 model = pipeline('translation', tokenizer=tokenizer, src_lang='eng_Latn', tgt_lang='fra_Latn', max_length = 200, model=model)
