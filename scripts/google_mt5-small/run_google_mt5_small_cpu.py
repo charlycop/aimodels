@@ -1,46 +1,40 @@
-from transformers import MT5Tokenizer, MT5ForConditionalGeneration
+from transformers import MT5ForConditionalGeneration, MT5Tokenizer
 
+# Charger le modèle et le tokenizer
 model_location = "../../Models/mt5-small"
 
-# Load the tokenizer
 tokenizer = MT5Tokenizer.from_pretrained(model_location)
-
-# Load the model
 model = MT5ForConditionalGeneration.from_pretrained(model_location)
 
-# Define the input text and target language
-input_text = "Kjo është një fjali shembull në shqip."
-target_language = "en"  # English
+# Texte à traduire
+source_language = "en"  # English
+target_language = "fr"  # French
+source_text = "This is a test."
+input_text = f"translate {target_language} {source_text}"
 
-# Map the target language to the corresponding language ID
-language_id_mapping = {
-    "en": 0,  # English
-    "fr": 1,  # French
-    "es": 2,  # Spanish
-    "it": 3,  # Italian
-    "pt": 4,  # Portuguese
-    "de": 5,  # German
-    "nl": 6,  # Dutch
-    "ru": 7,  # Russian
-    "zh": 8,  # Chinese
-    "ja": 9,  # Japanese
-    "ko": 10,  # Korean
-    "ar": 11,  # Arabic
-    "hi": 12,  # Hindi
-    # ... add more languages if needed
-}
-target_language_id = language_id_mapping[target_language]
+# Tokeniser le texte
+input_ids = tokenizer.encode(input_text, return_tensors="pt")
 
-# Encode the input text
-encoded_input = tokenizer(input_text, return_tensors="pt")
+# Générer la traduction
+outputs = model.generate(input_ids, max_length=100)
 
-# Generate the translation with forced_bos_token_id
-output = model.generate(
-    **encoded_input,
-    forced_bos_token_id=target_language_id
-)
+# Décoder et afficher la traduction
+translated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+translated_text = translated_text.replace("<extra_id_0>", "").strip()
+print("Traduction:", translated_text)
 
-# Decode the translation
-translated_text = tokenizer.decode(output[0], skip_special_tokens=True)
 
-print(translated_text)
+
+
+# # Texte à traduire
+# source_text = "translate English to French: This is a test."
+
+# # Tokeniser le texte
+# input_ids = tokenizer.encode(source_text, return_tensors="pt")
+
+# # Générer la traduction
+# outputs = model.generate(input_ids, max_length=100)
+
+# # Décoder et afficher la traduction
+# translated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+# print("Traduction:", translated_text)
