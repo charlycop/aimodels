@@ -1,5 +1,6 @@
 from transformers import MarianTokenizer, MarianMTModel
 
+
 model_location = "../../Models/opus-mt-en-sq"
 
 # Load the tokenizer

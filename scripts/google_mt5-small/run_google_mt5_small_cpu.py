@@ -3,8 +3,8 @@ from transformers import MT5ForConditionalGeneration, MT5Tokenizer
 model_location = "../../Models/mt5-small"
 
 # Charger le modèle et le tokenizer
-model = MT5ForConditionalGeneration.from_pretrained(model_location)
-tokenizer = MT5Tokenizer.from_pretrained(model_location)
+model = MT5ForConditionalGeneration.from_pretrained("google/mt5-small")
+tokenizer = MT5Tokenizer.from_pretrained("google/mt5-small")
 
 # Phrase à traduire
 source_text = "This is a sample sentence to translate."
