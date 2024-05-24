@@ -1,7 +1,7 @@
 Link : https://huggingface.co/google/mt5-small
 
 # mT5 have to be finetuned to be used, it cannot be used out of the box for translation.
-Please see explanation here : `https://stackoverflow.com/questions/76040850/can-mt5-model-on-huggingface-be-used-for-machine-translation`
+Please see explanation [here](https://stackoverflow.com/questions/76040850/can-mt5-model-on-huggingface-be-used-for-machine-translation)
 
 ### To install : 
 - `cd ../../Models;git clone https://huggingface.co/google/mt5-small;cd ../scripts/google_mt5-small`
