@@ -3,9 +3,7 @@
 import os
 import shutil
 
-# Define the local and Hugging Face model locations
-local_model_location = "../../Models/opus-mt-en-sq"
-huggingface_model = "Helsinki-NLP/opus-mt-en-sq"
+
 cache_dir = os.path.join(os.path.expanduser("~"), ".cache", "huggingface")
 
 # Define the menu options

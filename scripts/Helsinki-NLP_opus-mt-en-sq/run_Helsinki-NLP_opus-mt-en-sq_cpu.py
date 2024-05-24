@@ -1,5 +1,12 @@
 from transformers import MarianTokenizer, MarianMTModel
+import sys
+
+sys.path.append("../")
 import our_utils
+
+# Define the local and Hugging Face model locations
+local_model_location = "../../Models/opus-mt-en-sq"
+huggingface_model = "Helsinki-NLP/opus-mt-en-sq"
 
 # Create a loop that displays the menu and prompts the user for their choice
 while True:
@@ -10,11 +17,11 @@ while True:
     # Perform the appropriate action based on the user's choice
     if user_choice == "1":
         # Load the local model and perform the translation
-        actual_model = our_utils.local_model_location
+        actual_model = local_model_location
         
     elif user_choice == "2":
         # Load the Hugging Face model and perform the translation
-        actual_model = our_utils.huggingface_model
+        actual_model = huggingface_model
 
     elif user_choice == "3":
         our_utils.delete_cache()
