@@ -1,10 +1,9 @@
 import sacrebleu
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
-import torch
+from transformers import MarianTokenizer, MarianMTModel
 
 # Define paths to the extracted Europarl files
-source_file = '../wmt17.de-en.en'
-target_file = '../wmt17.en-de.de'
+target_file = '../wmt17.de-en.de'
+source_file = '../wmt17.en-de.en'
 
 # Read the data
 with open(source_file, 'r', encoding='utf-8') as src, open(target_file, 'r', encoding='utf-8') as tgt:
@@ -12,38 +11,34 @@ with open(source_file, 'r', encoding='utf-8') as src, open(target_file, 'r', enc
     references = tgt.readlines()
 
 # Limit the data size for testing to avoid memory issues
-inputs = inputs[:1000]
-references = [[ref.strip()] for ref in references[:1000]]
+max_lines = 200
+inputs = inputs[:200]
+references = [[ref.strip()] for ref in references[:max_lines]]
 
 # Define the local and Hugging Face model locations
 local_model_location = "../../Models/opus-mt-en-de"
 huggingface_model = "Helsinki-NLP/opus-mt-en-de"
 
-model_location = huggingface_model
+actual_model = huggingface_model
 
-tokenizer = AutoTokenizer.from_pretrained(model_location)
-model = AutoModelForSeq2SeqLM.from_pretrained(model_location)
-
-# Move the model to CPU (you can change this to "cuda" if you have a GPU)
-device = torch.device("cpu")
-model.to(device)
-
-# Create a translation pipeline
-translation_pipeline = pipeline(
-    'translation', 
-    model=model, 
-    tokenizer=tokenizer, 
-    src_lang='ger_Latn', 
-    tgt_lang='eng_Latn', 
-    max_length=200, 
-    device=0 if torch.cuda.is_available() else -1
-)
+tokenizer = MarianTokenizer.from_pretrained(actual_model)
+model = MarianMTModel.from_pretrained(actual_model)
 
 # Generate translations using the model
 translations = []
+cpt=0
 for text in inputs:
-    result = translation_pipeline(text.strip(), max_length=50, do_sample=True, top_k=50, top_p=0.95, num_return_sequences=1)[0]['translation_text']
-    translations.append(result)
+
+    # Encode the input text
+    encoded_input = tokenizer(text, return_tensors="pt")
+
+    # Generate the translation
+    output = model.generate(**encoded_input)
+    
+    translations.append(tokenizer.decode(output[0], skip_special_tokens=True))
+
+    cpt += 1
+    print(cpt)
 
 # Print generated translations for inspection
 print("Generated Translations:", translations[:5])  # Print first 5 translations for inspection
