@@ -2,11 +2,14 @@ from transformers import MarianTokenizer, MarianMTModel
 import os
 import shutil
 import torch
+import sys
+
+sys.path.append("../")
+import our_utils
 
 # Define the local and Hugging Face model locations
 local_model_location = "../../Models/opus-mt-en-sq"
 huggingface_model = "Helsinki-NLP/opus-mt-en-sq"
-cache_dir = os.path.join(os.path.expanduser("~"), ".cache", "huggingface")
 
 
 # Define the menu options
@@ -19,27 +22,21 @@ menu_options = {
 
 # Create a loop that displays the menu and prompts the user for their choice
 while True:
-    # Display the menu options
-    print("\nTranslation Menu")
-    for option, description in menu_options.items():
-        print(f"{option}. {description}")
 
-    # Prompt the user for their choice
-    user_choice = input("\nEnter your choice: ")
+    # Display the menu and prompt the user for their choice
+    user_choice = our_utils.display_menu()
 
     # Perform the appropriate action based on the user's choice
     if user_choice == "1":
         # Load the local model and perform the translation
-        tokenizer = MarianTokenizer.from_pretrained(local_model_location)
-        model = MarianMTModel.from_pretrained(local_model_location).to("cuda")
+        actual_model = local_model_location
 
     elif user_choice == "2":
         # Load the Hugging Face model and perform the translation
-        tokenizer = MarianTokenizer.from_pretrained(huggingface_model)
-        model = MarianMTModel.from_pretrained(huggingface_model).to("cuda")
+        actual_model = huggingface_model
 
     elif user_choice == "3":
-        shutil.rmtree(cache_dir)
+        our_utils.delete_cache()
         continue
 
     elif user_choice == "4":
@@ -50,6 +47,9 @@ while True:
     else:
         # Display an error message if the user's choice is invalid
         print("\nInvalid choice. Please try again.")
+
+    tokenizer = MarianTokenizer.from_pretrained(actual_model)
+    model = MarianMTModel.from_pretrained(actual_model).to("cuda")
 
     # Define the input text
     input_text = "This is a sample English sentence."

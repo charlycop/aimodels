@@ -1,23 +1,53 @@
 from transformers import MarianTokenizer, MarianMTModel
+import sys
 
-model_location = "../../Models/opus-mt-sq-en"
+sys.path.append("../")
+import our_utils
 
-# Load the tokenizer
-tokenizer = MarianTokenizer.from_pretrained(model_location)
+# Define the local and Hugging Face model locations
+local_model_location = "../../Models/opus-mt-sq-en"
+huggingface_model = "Helsinki-NLP/opus-mt-sq-en"
 
-# Load the model
-model = MarianMTModel.from_pretrained(model_location)
+# Create a loop that displays the menu and prompts the user for their choice
+while True:
 
-# Define the input text
-input_text = "Kjo është një fjali shembull në shqip."
+    # Display the menu and prompt the user for their choice
+    user_choice = our_utils.display_menu()
 
-# Encode the input text
-encoded_input = tokenizer(input_text, return_tensors="pt")
+    # Perform the appropriate action based on the user's choice
+    if user_choice == "1":
+        # Load the local model and perform the translation
+        actual_model = local_model_location
+        
+    elif user_choice == "2":
+        # Load the Hugging Face model and perform the translation
+        actual_model = huggingface_model
 
-# Generate the translation
-output = model.generate(**encoded_input)
+    elif user_choice == "3":
+        our_utils.delete_cache()
+        continue
 
-# Decode the translation
-translated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+    elif user_choice == "4":
+        # Exit the program
+        print("\nGoodbye!")
+        break
 
-print(translated_text)
+    else:
+        # Display an error message if the user's choice is invalid
+        print("\nInvalid choice. Please try again.")
+
+    tokenizer = MarianTokenizer.from_pretrained(actual_model)
+    model = MarianMTModel.from_pretrained(actual_model)
+    # Define the input text
+    input_text = "Kjo është një fjali shembull në shqip."
+    
+    # Encode the input text
+    encoded_input = tokenizer(input_text, return_tensors="pt")
+
+    # Generate the translation
+    output = model.generate(**encoded_input)
+
+    # Decode the translation
+    translated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+
+    print(translated_text)
