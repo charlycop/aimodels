@@ -1,0 +1,3 @@
+[submodule "scripts/Benchmark/sacreBleu/sacrebleu_repo"]
+	path = scripts/Benchmark/sacreBleu/sacrebleu_repo
+	url = https://github.com/charlycop/sacrebleu
