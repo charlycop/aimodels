@@ -38,7 +38,7 @@ for text in inputs:
     translations.append(tokenizer.decode(output[0], skip_special_tokens=True))
 
     cpt += 1
-    print(cpt)
+    print("Lines processed : " + str(cpt) + "/" + str(max_lines))
 
 # Print generated translations for inspection
 print("Generated Translations:", translations[:5])  # Print first 5 translations for inspection
