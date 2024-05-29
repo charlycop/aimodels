@@ -8,5 +8,5 @@ Link : https://huggingface.co/microsoft/speecht5_tts
 - `pip install --upgrade transformers sentencepiece datasets[audio]`
 
 ### To Run :
-- `python3 run_microsoft_speecht5_tts_cpu.py` (for cpu version to be tested)
-- `python3 run_microsoft_speecht5_tts_gpu.py` (for gpu version to be tested)
+- `python3 run_microsoft_speecht5_tts_cpu.py`
+- `python3 run_microsoft_speecht5_tts_gpu.py`
