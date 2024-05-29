@@ -2,6 +2,7 @@
 
 import os
 import shutil
+import torch
 
 cache_dir = os.path.join(os.path.expanduser("~"), ".cache", "huggingface")
 
@@ -32,3 +33,17 @@ def delete_cache():
 
     # Print a message to confirm that the cache was deleted
     print("Hugging Face cache deleted.")
+
+# Return the GPU the system is using
+def find_gpu_type():
+    # Check for ROCm support
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")
+    else :
+        print("No GPU !!")
+        exit(1)
+    
+    print(f"Using device: {device}")
+    return device

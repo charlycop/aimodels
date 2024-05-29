@@ -8,6 +8,8 @@ import our_utils
 local_model_location = "../../Models/flan_t5_base"
 huggingface_model = "google/flan-t5-base"
 
+device = our_utils.find_gpu_type()
+
 # Create a loop that displays the menu and prompts the user for their choice
 while True:
 
@@ -37,10 +39,10 @@ while True:
         print("\nInvalid choice. Please try again.")
 
     tokenizer = T5Tokenizer.from_pretrained(actual_model) 
-    model = T5ForConditionalGeneration.from_pretrained(actual_model) 
+    model = T5ForConditionalGeneration.from_pretrained(actual_model).to(device)
 
     input_text = "translate English to German: How old are you?" 
-    input_ids = tokenizer(input_text, return_tensors="pt").input_ids.to("cuda")
+    input_ids = tokenizer(input_text, return_tensors="pt").input_ids.to(device)
 
     outputs = model.generate(input_ids) 
 

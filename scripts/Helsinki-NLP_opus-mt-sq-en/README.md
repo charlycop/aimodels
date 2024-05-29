@@ -5,4 +5,4 @@ Link : https://huggingface.co/Helsinki-NLP/opus-mt-sq-en
 
 ### To Run :
 - `python3 run_Helsinki-NLP_opus-mt-sq-en_cpu.py` (for cpu version)
-- `python3 run_Helsinki-NLP_opus-mt-sq-en_gpu.py` (for gpu version to be tested)
+- `python3 run_Helsinki-NLP_opus-mt-sq-en_gpu.py` (for gpu version to be tested on AMD)

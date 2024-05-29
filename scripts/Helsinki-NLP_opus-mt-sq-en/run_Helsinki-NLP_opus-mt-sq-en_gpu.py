@@ -1,7 +1,6 @@
 from transformers import MarianTokenizer, MarianMTModel
 import os
 import shutil
-import torch
 import sys
 
 sys.path.append("../")
@@ -11,16 +10,7 @@ import our_utils
 local_model_location = "../../Models/opus-mt-sq-en"
 huggingface_model = "Helsinki-NLP/opus-mt-sq-en"
 
-# Check for ROCm support
-if torch.cuda.is_available():
-    device = torch.device("cuda")
-elif torch.backends.mps.is_available():
-    device = torch.device("mps")
-else :
-    print("No GPU !!")
-    exit(1)
-
-print(f"Using device: {device}")
+device = our_utils.find_gpu_type()
 
 # Create a loop that displays the menu and prompts the user for their choice
 while True:
