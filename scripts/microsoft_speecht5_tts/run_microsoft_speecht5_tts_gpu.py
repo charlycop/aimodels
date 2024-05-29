@@ -37,8 +37,8 @@ while True:
         # Display an error message if the user's choice is invalid
         print("\nInvalid choice. Please try again.")
 
-    processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
-    model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts").to(device)
+    processor = SpeechT5Processor.from_pretrained(actual_model)
+    model = SpeechT5ForTextToSpeech.from_pretrained(actual_model).to(device)
     vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan").to(device)
 
     inputs = processor(text="Charly is so handsome, incredible!", return_tensors="pt")
