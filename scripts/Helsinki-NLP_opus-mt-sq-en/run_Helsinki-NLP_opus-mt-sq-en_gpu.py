@@ -11,14 +11,16 @@ import our_utils
 local_model_location = "../../Models/opus-mt-sq-en"
 huggingface_model = "Helsinki-NLP/opus-mt-sq-en"
 
+# Check for ROCm support
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+elif torch.backends.mps.is_available():
+    device = torch.device("mps")
+else :
+    print("No GPU !!")
+    exit(1)
 
-# Define the menu options
-menu_options = {
-    1: "Use local model",
-    2: "Use Hugging Face model",
-    3: "Delete the huggingface cache folder",
-    4: "Exit"
-}
+print(f"Using device: {device}")
 
 # Create a loop that displays the menu and prompts the user for their choice
 while True:
@@ -49,13 +51,13 @@ while True:
         print("\nInvalid choice. Please try again.")
 
     tokenizer = MarianTokenizer.from_pretrained(actual_model)
-    model = MarianMTModel.from_pretrained(actual_model).to("cuda")
+    model = MarianMTModel.from_pretrained(actual_model).to(device)
 
     # Define the input text
     input_text = "Kjo është një fjali shembull në shqip."
 
     # Encode the input text
-    encoded_input = tokenizer(input_text, return_tensors="pt")
+    encoded_input = tokenizer(input_text, return_tensors="pt").to(device)
 
     # Generate the translation
     output = model.generate(**encoded_input)
