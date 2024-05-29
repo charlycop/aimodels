@@ -6,7 +6,7 @@ import sys
 sys.path.append("../")
 import our_utils
 
-# Check if CUDA is available
+# forcing CPU computing
 device = "cpu"
 print(f"Using device: {device}")
 
