@@ -1,36 +1,51 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
+from flask_cors import CORS
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
-
-
 import torch
 
-# Define the local and Hugging Face model locations
-local_model_location = "../../../Models/nllb-200-distilled-600M"
+app = Flask(__name__)
+CORS(app)
+
+# Define the model location
 huggingface_model = "facebook/nllb-200-distilled-600M"
 
-actual_model = huggingface_model
 device = torch.device("cpu")
 
 # Load the model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained(actual_model)
-model = AutoModelForSeq2SeqLM.from_pretrained(actual_model)
+tokenizer = AutoTokenizer.from_pretrained(huggingface_model)
+model = AutoModelForSeq2SeqLM.from_pretrained(huggingface_model)
 model.to(device)
-model = pipeline('translation', tokenizer=tokenizer, src_lang='eng_Latn', tgt_lang='fra_Latn', max_length = 200, model=model)
 
-app = Flask(__name__)
+# Create the translation pipelines
+eng_to_fra_pipeline = pipeline('translation', model=model, tokenizer=tokenizer, src_lang='eng_Latn', tgt_lang='fra_Latn')
+fra_to_eng_pipeline = pipeline('translation', model=model, tokenizer=tokenizer, src_lang='fra_Latn', tgt_lang='eng_Latn')
+alb_to_eng_pipeline = pipeline('translation', model=model, tokenizer=tokenizer, src_lang='als_Latn', tgt_lang='eng_Latn')
+eng_to_alb_pipeline = pipeline('translation', model=model, tokenizer=tokenizer, src_lang='eng_Latn', tgt_lang='als_Latn')
+
+@app.route('/')
+def index():
+    response = make_response("Server is alive", 200)
+    return response
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # Obtenir les données d'entrée depuis la requête
-    input_data = request.json['input']
+    data = request.json
+    input_text = data['input']
+    direction = data.get('direction', 'eng_to_fra')  # Default to English to French
 
-    # Generate text with the model
-    output = model(input_data, max_length=50, do_sample=True, top_k=50, top_p=0.95, num_return_sequences=1)[0]['translation_text']
+    if direction == 'eng_to_fra':
+        result = eng_to_fra_pipeline(input_text, max_length=1000, do_sample=True, top_k=50, top_p=0.95, num_return_sequences=1)
+    elif direction == 'fra_to_eng':
+        result = fra_to_eng_pipeline(input_text, max_length=1000, do_sample=True, top_k=50, top_p=0.95, num_return_sequences=1)
+    elif direction == 'eng_to_alb':
+        result = eng_to_alb_pipeline(input_text, max_length=1000, do_sample=True, top_k=50, top_p=0.95, num_return_sequences=1)
+    elif direction == 'alb_to_eng':
+        result = alb_to_eng_pipeline(input_text, max_length=1000, do_sample=True, top_k=50, top_p=0.95, num_return_sequences=1)
+    else:
+        return jsonify({"error": "Invalid translation direction"}), 400
 
-    # Convertir la sortie en format JSON
-    output_json = output.tolist()
-
-    return jsonify(output_json)
+    output = result[0]['translation_text']
+    return jsonify({"translation": output})
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000)

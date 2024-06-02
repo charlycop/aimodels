@@ -1,46 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NLLB Inference</title>
   <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      color: #00bcd4;
+    }
+
     textarea {
-      width: 100%;
-      height: 200px;
-      font-size: 16px;
+      width: 80%;
+      max-width: 800px;
+      height: 150px;
+      font-size: 1em;
       padding: 10px;
-      box-sizing: border-box;
+      margin-bottom: 20px;
+      border: 2px solid #00bcd4;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      resize: none;
+    }
+
+    button {
+      width: 150px;
+      padding: 10px;
+      margin: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #00bcd4;
+      color: #ffffff;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #008c9e;
+    }
+
+    #output {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 800px;
+      font-size: 1.2em;
+      padding: 10px;
+      border: 2px solid #00bcd4;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      text-align: left;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    select {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #00bcd4;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      font-size: 1em;
     }
   </style>
 </head>
 <body>
-  <h1>NLLB Inference</h1>
-  <textarea id="input-text" placeholder="Entrez votre texte ici..."></textarea>
-  <button onclick="sendInferenceRequest()">Envoyer la requête</button>
-  <div id="output"></div>
+  <div class="container">
+    <h1>NLLB Inference - Test UI</h1>
+    <textarea id="input-text" placeholder="Enter your text here..."></textarea>
+    <select id="translation-direction">
+      <option value="eng_to_fra">English to French</option>
+      <option value="fra_to_eng">French to English</option>
+      <option value="eng_to_alb">English to Albanian</option>
+      <option value="alb_to_eng">Albanian to English</option>
+    </select>
+    <div>
+      <button onclick="sendInferenceRequest()">Translate</button>
+      <button onclick="checkServerStatus()">Check the Server</button>
+    </div>
+    <div id="output"></div>
+  </div>
 
   <script>
     async function sendInferenceRequest() {
       const inputText = document.getElementById('input-text').value;
+      const translationDirection = document.getElementById('translation-direction').value;
       const outputDiv = document.getElementById('output');
 
       try {
-        outputDiv.innerHTML = 'Chargement...';
-        const response = await fetch('http://your-server.com:5000/predict', {
+        outputDiv.innerHTML = 'Loading...';
+        const response = await fetch('http://localhost:5000/predict', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ input: inputText })
+          body: JSON.stringify({ input: inputText, direction: translationDirection })
         });
 
         if (response.ok) {
-          const output = await response.json();
-          outputDiv.innerHTML = 'Résultat de l\'inférence : ' + JSON.stringify(output);
+          const result = await response.json();
+          outputDiv.innerHTML = 'Translation: ' + result.translation;
         } else {
-          outputDiv.innerHTML = 'Erreur lors de la requête d\'inférence';
+          const errorText = await response.text();
+          outputDiv.innerHTML = 'Error during the inference process: ' + errorText;
         }
       } catch (error) {
-        outputDiv.innerHTML = 'Erreur lors de la requête d\'inférence : ' + error;
+        outputDiv.innerHTML = 'Error during the inference process: ' + error.message;
+      }
+    }
+
+    async function checkServerStatus() {
+      const outputDiv = document.getElementById('output');
+
+      try {
+        const response = await fetch('http://localhost:5000/');
+        if (response.ok) {
+          outputDiv.innerHTML = 'The server is alive and ready';
+        } else {
+          const errorText = await response.text();
+          outputDiv.innerHTML = 'The server is unreachable: ' + errorText;
+        }
+      } catch (error) {
+        if (error.message.includes('CORS')) {
+          outputDiv.innerHTML = 'Error: CORS policy is blocking the request. Please make sure the server is configured to accept cross-origin requests.';
+        } else {
+          outputDiv.innerHTML = 'Error during server check: ' + error.message;
+        }
       }
     }
   </script>
