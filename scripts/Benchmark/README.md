@@ -1,5 +1,5 @@
 ### BenchMark BertScore (To verify)
-- [https://github.com/mjpost/sacrebleu](https://github.com/Tiiiger/bert_score)
+- [https://github.com/Tiiiger/bert_score]
 
 
 ### To install : 
