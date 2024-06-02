@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NLLB Inference</title>
+  <style>
+    textarea {
+      width: 100%;
+      height: 200px;
+      font-size: 16px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h1>NLLB Inference</h1>
+  <textarea id="input-text" placeholder="Entrez votre texte ici..."></textarea>
+  <button onclick="sendInferenceRequest()">Envoyer la requête</button>
+  <div id="output"></div>
+
+  <script>
+    async function sendInferenceRequest() {
+      const inputText = document.getElementById('input-text').value;
+      const outputDiv = document.getElementById('output');
+
+      try {
+        outputDiv.innerHTML = 'Chargement...';
+        const response = await fetch('http://your-server.com:5000/predict', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ input: inputText })
+        });
+
+        if (response.ok) {
+          const output = await response.json();
+          outputDiv.innerHTML = 'Résultat de l\'inférence : ' + JSON.stringify(output);
+        } else {
+          outputDiv.innerHTML = 'Erreur lors de la requête d\'inférence';
+        }
+      } catch (error) {
+        outputDiv.innerHTML = 'Erreur lors de la requête d\'inférence : ' + error;
+      }
+    }
+  </script>
+</body>
+</html>
