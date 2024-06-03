@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text To Speech Inference</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      color: #00bcd4;
+    }
+
+    textarea {
+      width: 80%;
+      max-width: 800px;
+      height: 150px;
+      font-size: 1em;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #00bcd4;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      resize: none;
+    }
+
+    button {
+      width: 150px;
+      padding: 10px;
+      margin: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #00bcd4;
+      color: #ffffff;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #008c9e;
+    }
+
+    #output {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 800px;
+      font-size: 1.2em;
+      padding: 10px;
+      border: 2px solid #00bcd4;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      text-align: left;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    select {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #00bcd4;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Microsoft speecht5 TTS model Inference - Test UI</h1>
+    <textarea id="input-text" placeholder="Enter your text here..."></textarea>
+    <div>
+      <button onclick="sendInferenceRequest()">Say it !</button>
+      <button onclick="checkServerStatus()">Check the Server</button>
+    </div>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    async function sendInferenceRequest() {
+      const inputText = document.getElementById('input-text').value;
+      const outputDiv = document.getElementById('output');
+
+      try {
+        outputDiv.innerHTML = 'Generating audio voice...';
+        const response = await fetch('http://localhost:5000/predict', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ input: inputText })
+        });
+
+        if (response.ok) {
+          const audioBlob = await response.blob();
+          const audioUrl = URL.createObjectURL(audioBlob);
+          const audioElement = document.createElement('audio');
+          audioElement.src = audioUrl;
+          audioElement.controls = true;
+          outputDiv.innerHTML = '';
+          outputDiv.appendChild(audioElement);
+        } else {
+          const errorText = await response.text();
+          outputDiv.innerHTML = 'Error during the inference process: ' + errorText;
+        }
+      } catch (error) {
+        outputDiv.innerHTML = 'Error during the inference process: ' + error.message;
+      }
+    }
+
+    async function checkServerStatus() {
+      const outputDiv = document.getElementById('output');
+
+      try {
+        const response = await fetch('http://localhost:5000/');
+        if (response.ok) {
+          outputDiv.innerHTML = 'The server is alive and ready';
+        } else {
+          const errorText = await response.text();
+          outputDiv.innerHTML = 'The server is unreachable: ' + errorText;
+        }
+      } catch (error) {
+        if (error.message.includes('CORS')) {
+          outputDiv.innerHTML = 'Error: CORS policy is blocking the request. Please make sure the server is configured to accept cross-origin requests.';
+        } else {
+          outputDiv.innerHTML = 'Error during server check: ' + error.message;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
