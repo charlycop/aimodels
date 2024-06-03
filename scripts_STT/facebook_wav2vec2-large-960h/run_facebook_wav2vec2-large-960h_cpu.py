@@ -6,10 +6,6 @@ import sys
 sys.path.append("../../src_utils/")
 import our_utils
 
-# forcing CPU computing
-device = "cpu"
-print(f"Using device: {device}")
-
 # Define the local and Hugging Face model locations
 local_model_location = "../../Models/wav2vec2-large-960h"
 huggingface_model = "facebook/wav2vec2-large-960h"
@@ -43,7 +39,7 @@ while True:
     model = Wav2Vec2ForCTC.from_pretrained(actual_model)
 
     # Load audio file
-    audio_input, sample_rate = sf.read("../../samples/female_en_tiktok_stereo_44100Hz_extrashort.wav")
+    audio_input, sample_rate = sf.read("../../samples/female_en_tiktok_mono_44100Hz.wav")
 
     # Resample the audio to 16000 Hz if it's not already at that rate
     if sample_rate != 16000:

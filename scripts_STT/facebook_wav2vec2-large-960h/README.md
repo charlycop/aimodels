@@ -1,6 +1,9 @@
 ### Langages supported
 - english only
 
+### AUDIO supported
+- MONO ONLY
+
 Link : https://huggingface.co/facebook/wav2vec2-large-960h
 
 ### To install : 
