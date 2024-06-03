@@ -1,0 +1,3 @@
+Bonjour, je m'appelle [votre nom]. Aujourd'hui, je vais vous parler de la technologie de reconnaissance vocale. Cette technologie permet de convertir la parole en texte écrit. Elle est utilisée dans de nombreux domaines, comme les assistants vocaux, la transcription de réunions et l'accessibilité pour les personnes en situation de handicap.
+
+La reconnaissance vocale repose sur des algorithmes complexes et des modèles d'apprentissage automatique. Ces modèles sont entraînés sur de grandes quantités de données audio pour apprendre à comprendre et à transcrire la parole humaine.
