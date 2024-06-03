@@ -11,5 +11,5 @@ Link : https://huggingface.co/facebook/wav2vec2-large-960h
 - `pip install transformers soundfile scipy`
 
 ### To Run :
-- `python3 run_facebook_wav2vec2-large-960h_cpu.py`
+- `python3 run_facebook_wav2vec2-large-960h_cpu.py` (to be fully tested)
 - `python3 run_facebook_wav2vec2-large-960h_gpu.py` (not yet implemented)

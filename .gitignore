@@ -12,8 +12,12 @@ Thumbs.db
 *~
 *.bak
 
-# Ignorer les fichiers AUDIO
+# Ignore all .wav files
 *.wav
+
+# But include .wav files in the samples folder and its subdirectories
+!samples/**/*.wav
+
 
 # Ignorer les fichiers de compilation Python
 *.pyc
