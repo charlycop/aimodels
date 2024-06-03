@@ -1,7 +1,7 @@
-Link : https://huggingface.co/microsoft/speecht5_tts
+Link : UNKNOWN SEEMS TO BE COQUI.AI
 
-### To install : 
-- `cd ../../Models;git clone tobemodify;cd ../scripts_TTS/tobemodify`
+### Install :
+- will be downloaded at 1st run from an unknown location
 
 ### Before running :
 - `pip install --upgrade pip`
@@ -9,4 +9,4 @@ Link : https://huggingface.co/microsoft/speecht5_tts
 
 ### To Run :
 - `python3 run_tocotron2_tts_cpu.py`
-- `python3 run_tocotron2_tts_gpu.py`
+- `python3 run_tocotron2_tts_gpu.py` (not yet implemented)
