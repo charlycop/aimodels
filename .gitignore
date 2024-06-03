@@ -12,6 +12,9 @@ Thumbs.db
 *~
 *.bak
 
+# Ignorer les fichiers AUDIO
+*.wav
+
 # Ignorer les fichiers de compilation Python
 *.pyc
 __pycache__/
