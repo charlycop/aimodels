@@ -1,0 +1,4 @@
+Im Zentrum der Zahlentheorie, jenes Zweiges der Mathematik, der sich mit den Eigenschaften der natürlichen Zahlen beschäftigt,
+stehen die Primzahlen. Diese sind ausgezeichnet durch die Eigenschaft, genau zwei Teiler zu haben, nämlich eins und sich selbst.
+Primzahlen bilden gewissermaßen die Atome der ganzen Zahlen, da sich jede positive ganze Zahl eindeutig multiplikativ in solche zerlegen lässt. Dieses Resultat wird auch als Fundamentalsatz der Arithmetik bezeichnet.
+Trotz ihrer einfachen Definition ist nach mehreren Jahrtausenden Mathematikgeschichte bis heute kein Muster bekannt, dem sich die Primzahlen in ihrer Folge unterwerfen. 
