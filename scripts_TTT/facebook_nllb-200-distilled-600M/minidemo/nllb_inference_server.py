@@ -45,7 +45,9 @@ def predict():
         return jsonify({"error": "Invalid translation direction"}), 400
 
     output = result[0]['translation_text']
+    print("input : ", input_text)
+    print("translation : ", output)
     return jsonify({"translation": output})
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=5000)
+    app.run(host='localhost', port=5001)

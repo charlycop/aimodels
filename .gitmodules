@@ -1,3 +1,6 @@
 [submodule "scripts/Benchmark/sacreBleu/sacrebleu_repo"]
 	path = scripts/Benchmark/sacreBleu/sacrebleu_repo
 	url = https://github.com/charlycop/sacrebleu
+[submodule "webapps/react-translator"]
+	path = webapps/react-translator
+	url = https://github.com/charlycop/react-translator.git
