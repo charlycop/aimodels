@@ -7,7 +7,7 @@ sys.path.append("../../src_utils/")
 import our_utils
 
 # Define the local and Hugging Face model locations
-local_model_location = "../../Models/nllb-200-distilled-600M"
+local_model_location = "/home/shared/Models/nllb-200-distilled-600M"
 huggingface_model = "facebook/nllb-200-distilled-600M"
 
 # Create a loop that displays the menu and prompts the user for their choice
