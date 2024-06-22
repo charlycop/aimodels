@@ -8,3 +8,6 @@
 
 
 ### TO-DO
+
+### Problems
+- nllb 200 not working until now
