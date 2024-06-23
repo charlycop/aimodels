@@ -10,4 +10,4 @@
 ### TO-DO
 
 ### Problems
-- nllb 200 not working until now
+- nllb 200 not working until now (seems due to limited memory capacity)
