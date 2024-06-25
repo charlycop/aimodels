@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  <span>Angular Translator</span>
+</mat-toolbar>
+
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="language-selectors">
+        <app-language-selector [defaultLanguage]="sourceLanguage" (onChange)="sourceLanguage = $event" label="Source"></app-language-selector>
+        <app-language-selector [defaultLanguage]="targetLanguage" (onChange)="targetLanguage = $event" label="Cible"></app-language-selector>
+      </div>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <textarea matInput [(ngModel)]="input" placeholder="Entrez le texte à traduire" rows="4"></textarea>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <textarea matInput [value]="output" placeholder="Traduction" rows="4" readonly></textarea>
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary" (click)="translate()" [disabled]="disabled">Traduire</button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="progressItems.length > 0" class="progress-card">
+    <mat-card-content>
+      <h3>Chargement des modèles...</h3>
+      <div *ngFor="let item of progressItems">
+        <p>{{ item.file }}</p>
+        <mat-progress-bar mode="determinate" [value]="item.progress"></mat-progress-bar>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

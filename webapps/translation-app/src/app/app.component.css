@@ -1,0 +1,23 @@
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .language-selectors {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  button {
+    margin-top: 1rem;
+  }
+  
+  .progress-card {
+    margin-top: 2rem;
+  }
