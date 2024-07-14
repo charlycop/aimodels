@@ -1,0 +1,42 @@
+annoy @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/annoy-1.17.0-cp37-cp37m-macosx_10_14_x86_64.whl
+backports.zoneinfo==0.2.1
+cached-property @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/cached_property-1.5.2-py2.py3-none-any.whl
+click==8.1.3
+dateparser==1.1.1
+dnspython==2.2.1
+docutils==0.19
+fasteners @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/fasteners-0.17.3-py3-none-any.whl
+Flask==2.2.2
+gensim==3.3.0
+h5py @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/h5py-3.6.0-cp37-cp37m-macosx_10_9_x86_64.whl
+importlib-metadata==5.0.0
+itsdangerous==2.1.2
+Jinja2==3.1.2
+JIT==0.0.1
+lockfile==0.12.2
+lz4 @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/lz4-3.1.10-cp37-cp37m-macosx_10_9_x86_64.whl
+Markdown==3.4.1
+MarkupSafe==2.1.1
+mock==4.0.3
+monotonic==1.6
+note==0.5.2
+numpy @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/numpy-1.21.5-cp37-cp37m-macosx_10_9_x86_64.whl
+pymagnitude==0.1.143
+pymongo==4.3.2
+python-daemon==2.3.1
+python-dateutil==2.8.2
+pytz==2022.5
+pytz-deprecation-shim==0.1.0.post0
+pyzmq==24.0.1
+regex==2022.3.2
+scipy==1.7.3
+six==1.16.0
+smart-open==5.2.1
+torch @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/torch-1.10.2-cp37-none-macosx_10_9_x86_64.whl
+tornado==6.2
+typing_extensions @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/typing_extensions-4.0.1-py3-none-any.whl
+tzdata==2022.5
+tzlocal==4.2
+Werkzeug==2.2.2
+xxhash @ file:///private/var/folders/qq/qp8wy09563s_1lm8zy03jblw0000gp/T/pip-install-3_b1fmgd/pymagnitude_634af87649e44c19acec207ef17cc1b3/pymagnitude/req_wheels/xxhash-2.0.2-cp37-cp37m-macosx_10_9_x86_64.whl
+zipp==3.9.0
