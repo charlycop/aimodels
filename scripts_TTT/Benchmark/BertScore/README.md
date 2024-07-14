@@ -3,8 +3,9 @@
 
 
 ### To install : 
-- `pip install torch torchvision torchaudio
-- `pip install bert-score
+- activate your virtual environment in Python
+- Install the requirements.txt file with the following prompt:
+- pip install -r requirements. txt
 
 
 ### TO-DO
