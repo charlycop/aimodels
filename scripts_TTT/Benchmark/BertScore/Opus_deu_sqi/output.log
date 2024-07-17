@@ -1,0 +1,430 @@
+nohup: ignoring input
+wandb: Currently logged in as: wall-e- (logoi-ai). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.17.4
+wandb: Run data is saved locally in /home/walter/benchmark/aimodels/scripts_TTT/Benchmark/BertScore/opus-mt-src-tgt/wandb/run-20240716_054404-no18xeyz
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run de-sq-translation
+wandb: ⭐️ View project at https://wandb.ai/logoi-ai/marian-nmt
+wandb: 🚀 View run at https://wandb.ai/logoi-ai/marian-nmt/runs/no18xeyz
+['/home/walter/benchmark/aimodels/scripts_TTT/Benchmark/BertScore/opus-mt-src-tgt', '/usr/lib/python312.zip', '/usr/lib/python3.12', '/usr/lib/python3.12/lib-dynload', '/home/walter/.venvs/MyEnv/lib/python3.12/site-packages']
+[2024-07-16 05:44:05] [marian] Marian v1.12.14 2d067afb 2024-02-16 11:44:13 -0500
+[2024-07-16 05:44:05] [marian] Running on srv540653 as process 2604924 with command line:
+[2024-07-16 05:44:05] [marian] /home/shared/Models/marian-dev/build/marian --model model.npz --type transformer --train-sets de_train.txt sq_train.txt --max-length 150 --vocabs de-sq.model de-sq.model --mini-batch-fit -w 5000 --maxi-batch 1000 --early-stopping 10 --valid-freq 5000 --save-freq 5000 --disp-freq 500 --valid-metrics cross-entropy perplexity translation --valid-sets de_val.txt sq_val.txt --valid-script-path ./validate.sh --log model.log --valid-log model.valid.log --enc-depth 6 --dec-depth 6 --transformer-heads 8 --transformer-postprocess-emb d --transformer-postprocess dan --transformer-dropout 0.1 --label-smoothing 0.1 --learn-rate 0.0003 --lr-warmup 16000 --lr-decay-inv-sqrt 16000 --lr-report --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 --tied-embeddings-all --cpu-threads 6 --seed 1111 --exponential-smoothing
+[2024-07-16 05:44:05] [config] after: 0e
+[2024-07-16 05:44:05] [config] after-batches: 0
+[2024-07-16 05:44:05] [config] after-epochs: 0
+[2024-07-16 05:44:05] [config] all-caps-every: 0
+[2024-07-16 05:44:05] [config] allow-unk: false
+[2024-07-16 05:44:05] [config] authors: false
+[2024-07-16 05:44:05] [config] beam-size: 12
+[2024-07-16 05:44:05] [config] bert-class-symbol: "[CLS]"
+[2024-07-16 05:44:05] [config] bert-mask-symbol: "[MASK]"
+[2024-07-16 05:44:05] [config] bert-masking-fraction: 0.15
+[2024-07-16 05:44:05] [config] bert-sep-symbol: "[SEP]"
+[2024-07-16 05:44:05] [config] bert-train-type-embeddings: true
+[2024-07-16 05:44:05] [config] bert-type-vocab-size: 2
+[2024-07-16 05:44:05] [config] build-info: ""
+[2024-07-16 05:44:05] [config] check-gradient-nan: false
+[2024-07-16 05:44:05] [config] check-nan: false
+[2024-07-16 05:44:05] [config] cite: false
+[2024-07-16 05:44:05] [config] clip-norm: 5
+[2024-07-16 05:44:05] [config] comet-augment-bad: 0
+[2024-07-16 05:44:05] [config] comet-dropout: 0.1
+[2024-07-16 05:44:05] [config] comet-final-sigmoid: false
+[2024-07-16 05:44:05] [config] comet-mix: false
+[2024-07-16 05:44:05] [config] comet-mix-norm: false
+[2024-07-16 05:44:05] [config] comet-mixup: 0
+[2024-07-16 05:44:05] [config] comet-mixup-reg: false
+[2024-07-16 05:44:05] [config] comet-pooler-ffn:
+[2024-07-16 05:44:05] [config]   - 2048
+[2024-07-16 05:44:05] [config]   - 1024
+[2024-07-16 05:44:05] [config] comet-prepend-zero: false
+[2024-07-16 05:44:05] [config] comet-stop-grad: false
+[2024-07-16 05:44:05] [config] cost-scaling:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] cost-type: ce-sum
+[2024-07-16 05:44:05] [config] cpu-threads: 6
+[2024-07-16 05:44:05] [config] custom-fallbacks:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] data-threads: 8
+[2024-07-16 05:44:05] [config] data-weighting: ""
+[2024-07-16 05:44:05] [config] data-weighting-type: sentence
+[2024-07-16 05:44:05] [config] dec-cell: gru
+[2024-07-16 05:44:05] [config] dec-cell-base-depth: 2
+[2024-07-16 05:44:05] [config] dec-cell-high-depth: 1
+[2024-07-16 05:44:05] [config] dec-depth: 6
+[2024-07-16 05:44:05] [config] devices:
+[2024-07-16 05:44:05] [config]   - 0
+[2024-07-16 05:44:05] [config] dim-emb: 512
+[2024-07-16 05:44:05] [config] dim-rnn: 1024
+[2024-07-16 05:44:05] [config] dim-vocabs:
+[2024-07-16 05:44:05] [config]   - 0
+[2024-07-16 05:44:05] [config]   - 0
+[2024-07-16 05:44:05] [config] disp-first: 0
+[2024-07-16 05:44:05] [config] disp-freq: 500
+[2024-07-16 05:44:05] [config] disp-label-counts: true
+[2024-07-16 05:44:05] [config] dropout-rnn: 0
+[2024-07-16 05:44:05] [config] dropout-src: 0
+[2024-07-16 05:44:05] [config] dropout-trg: 0
+[2024-07-16 05:44:05] [config] dump-config: ""
+[2024-07-16 05:44:05] [config] dynamic-gradient-scaling:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] early-stopping: 10
+[2024-07-16 05:44:05] [config] early-stopping-epsilon:
+[2024-07-16 05:44:05] [config]   - 0
+[2024-07-16 05:44:05] [config] early-stopping-on: first
+[2024-07-16 05:44:05] [config] embedding-fix-src: false
+[2024-07-16 05:44:05] [config] embedding-fix-trg: false
+[2024-07-16 05:44:05] [config] embedding-normalization: false
+[2024-07-16 05:44:05] [config] embedding-vectors:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] enc-cell: gru
+[2024-07-16 05:44:05] [config] enc-cell-depth: 1
+[2024-07-16 05:44:05] [config] enc-depth: 6
+[2024-07-16 05:44:05] [config] enc-type: bidirectional
+[2024-07-16 05:44:05] [config] english-title-case-every: 0
+[2024-07-16 05:44:05] [config] exponential-smoothing: 0.0001
+[2024-07-16 05:44:05] [config] exponential-smoothing-replace-freq: 0
+[2024-07-16 05:44:05] [config] factor-weight: 1
+[2024-07-16 05:44:05] [config] factors-combine: sum
+[2024-07-16 05:44:05] [config] factors-dim-emb: 0
+[2024-07-16 05:44:05] [config] gradient-checkpointing: false
+[2024-07-16 05:44:05] [config] gradient-norm-average-window: 100
+[2024-07-16 05:44:05] [config] guided-alignment: none
+[2024-07-16 05:44:05] [config] guided-alignment-cost: ce
+[2024-07-16 05:44:05] [config] guided-alignment-weight: 0.1
+[2024-07-16 05:44:05] [config] ignore-model-config: false
+[2024-07-16 05:44:05] [config] input-types:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] interpolate-env-vars: false
+[2024-07-16 05:44:05] [config] keep-best: false
+[2024-07-16 05:44:05] [config] label-smoothing: 0.1
+[2024-07-16 05:44:05] [config] layer-normalization: false
+[2024-07-16 05:44:05] [config] learn-rate: 0.0003
+[2024-07-16 05:44:05] [config] lemma-dependency: ""
+[2024-07-16 05:44:05] [config] lemma-dim-emb: 0
+[2024-07-16 05:44:05] [config] log: model.log
+[2024-07-16 05:44:05] [config] log-level: info
+[2024-07-16 05:44:05] [config] log-time-zone: ""
+[2024-07-16 05:44:05] [config] logical-epoch:
+[2024-07-16 05:44:05] [config]   - 1e
+[2024-07-16 05:44:05] [config]   - 0
+[2024-07-16 05:44:05] [config] lr-decay: 0
+[2024-07-16 05:44:05] [config] lr-decay-freq: 50000
+[2024-07-16 05:44:05] [config] lr-decay-inv-sqrt:
+[2024-07-16 05:44:05] [config]   - 16000
+[2024-07-16 05:44:05] [config] lr-decay-repeat-warmup: false
+[2024-07-16 05:44:05] [config] lr-decay-reset-optimizer: false
+[2024-07-16 05:44:05] [config] lr-decay-start:
+[2024-07-16 05:44:05] [config]   - 10
+[2024-07-16 05:44:05] [config]   - 1
+[2024-07-16 05:44:05] [config] lr-decay-strategy: epoch+stalled
+[2024-07-16 05:44:05] [config] lr-report: true
+[2024-07-16 05:44:05] [config] lr-warmup: 16000
+[2024-07-16 05:44:05] [config] lr-warmup-at-reload: false
+[2024-07-16 05:44:05] [config] lr-warmup-cycle: false
+[2024-07-16 05:44:05] [config] lr-warmup-start-rate: 0
+[2024-07-16 05:44:05] [config] max-length: 150
+[2024-07-16 05:44:05] [config] max-length-crop: false
+[2024-07-16 05:44:05] [config] max-length-factor: 3
+[2024-07-16 05:44:05] [config] maxi-batch: 1000
+[2024-07-16 05:44:05] [config] maxi-batch-sort: trg
+[2024-07-16 05:44:05] [config] mini-batch: 64
+[2024-07-16 05:44:05] [config] mini-batch-fit: true
+[2024-07-16 05:44:05] [config] mini-batch-fit-step: 10
+[2024-07-16 05:44:05] [config] mini-batch-round-up: true
+[2024-07-16 05:44:05] [config] mini-batch-track-lr: false
+[2024-07-16 05:44:05] [config] mini-batch-warmup: 0
+[2024-07-16 05:44:05] [config] mini-batch-words: 0
+[2024-07-16 05:44:05] [config] mini-batch-words-ref: 0
+[2024-07-16 05:44:05] [config] model: model.npz
+[2024-07-16 05:44:05] [config] multi-loss-type: sum
+[2024-07-16 05:44:05] [config] n-best: false
+[2024-07-16 05:44:05] [config] no-reload: false
+[2024-07-16 05:44:05] [config] no-restore-corpus: false
+[2024-07-16 05:44:05] [config] no-spm-encode: false
+[2024-07-16 05:44:05] [config] normalize: 0
+[2024-07-16 05:44:05] [config] normalize-gradient: false
+[2024-07-16 05:44:05] [config] optimizer: adam
+[2024-07-16 05:44:05] [config] optimizer-delay: 1
+[2024-07-16 05:44:05] [config] optimizer-params:
+[2024-07-16 05:44:05] [config]   - 0.9
+[2024-07-16 05:44:05] [config]   - 0.98
+[2024-07-16 05:44:05] [config]   - 1e-09
+[2024-07-16 05:44:05] [config] output-omit-bias: false
+[2024-07-16 05:44:05] [config] overwrite: false
+[2024-07-16 05:44:05] [config] overwrite-checkpoint: true
+[2024-07-16 05:44:05] [config] precision:
+[2024-07-16 05:44:05] [config]   - float32
+[2024-07-16 05:44:05] [config]   - float32
+[2024-07-16 05:44:05] [config] pretrained-model: ""
+[2024-07-16 05:44:05] [config] quantize-biases: false
+[2024-07-16 05:44:05] [config] quantize-bits: 0
+[2024-07-16 05:44:05] [config] quantize-log-based: false
+[2024-07-16 05:44:05] [config] quantize-optimization-steps: 0
+[2024-07-16 05:44:05] [config] quiet: false
+[2024-07-16 05:44:05] [config] quiet-translation: false
+[2024-07-16 05:44:05] [config] quiet-validation: false
+[2024-07-16 05:44:05] [config] relative-paths: false
+[2024-07-16 05:44:05] [config] right-left: false
+[2024-07-16 05:44:05] [config] save-freq: 5000
+[2024-07-16 05:44:05] [config] seed: 1111
+[2024-07-16 05:44:05] [config] sentencepiece-alphas:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] sentencepiece-max-lines: 2000000
+[2024-07-16 05:44:05] [config] sentencepiece-options: ""
+[2024-07-16 05:44:05] [config] shuffle: data
+[2024-07-16 05:44:05] [config] shuffle-in-ram: false
+[2024-07-16 05:44:05] [config] sigterm: save-and-exit
+[2024-07-16 05:44:05] [config] skip: false
+[2024-07-16 05:44:05] [config] sqlite: ""
+[2024-07-16 05:44:05] [config] sqlite-drop: false
+[2024-07-16 05:44:05] [config] sync-sgd: false
+[2024-07-16 05:44:05] [config] tempdir: /tmp
+[2024-07-16 05:44:05] [config] throw-on-divergence:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] tied-embeddings: false
+[2024-07-16 05:44:05] [config] tied-embeddings-all: true
+[2024-07-16 05:44:05] [config] tied-embeddings-src: false
+[2024-07-16 05:44:05] [config] train-embedder-rank:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] train-sets:
+[2024-07-16 05:44:05] [config]   - de_train.txt
+[2024-07-16 05:44:05] [config]   - sq_train.txt
+[2024-07-16 05:44:05] [config] transformer-aan-activation: swish
+[2024-07-16 05:44:05] [config] transformer-aan-depth: 2
+[2024-07-16 05:44:05] [config] transformer-aan-nogate: false
+[2024-07-16 05:44:05] [config] transformer-decoder-autoreg: self-attention
+[2024-07-16 05:44:05] [config] transformer-decoder-dim-ffn: 0
+[2024-07-16 05:44:05] [config] transformer-decoder-ffn-depth: 0
+[2024-07-16 05:44:05] [config] transformer-depth-scaling: false
+[2024-07-16 05:44:05] [config] transformer-dim-aan: 2048
+[2024-07-16 05:44:05] [config] transformer-dim-ffn: 2048
+[2024-07-16 05:44:05] [config] transformer-dropout: 0.1
+[2024-07-16 05:44:05] [config] transformer-dropout-attention: 0
+[2024-07-16 05:44:05] [config] transformer-dropout-ffn: 0
+[2024-07-16 05:44:05] [config] transformer-ffn-activation: swish
+[2024-07-16 05:44:05] [config] transformer-ffn-depth: 2
+[2024-07-16 05:44:05] [config] transformer-guided-alignment-layer: last
+[2024-07-16 05:44:05] [config] transformer-heads: 8
+[2024-07-16 05:44:05] [config] transformer-no-affine: false
+[2024-07-16 05:44:05] [config] transformer-no-bias: false
+[2024-07-16 05:44:05] [config] transformer-no-projection: false
+[2024-07-16 05:44:05] [config] transformer-pool: false
+[2024-07-16 05:44:05] [config] transformer-postprocess: dan
+[2024-07-16 05:44:05] [config] transformer-postprocess-emb: d
+[2024-07-16 05:44:05] [config] transformer-postprocess-top: ""
+[2024-07-16 05:44:05] [config] transformer-preprocess: ""
+[2024-07-16 05:44:05] [config] transformer-rnn-projection: false
+[2024-07-16 05:44:05] [config] transformer-tied-layers:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] transformer-train-position-embeddings: false
+[2024-07-16 05:44:05] [config] tsv: false
+[2024-07-16 05:44:05] [config] tsv-fields: 0
+[2024-07-16 05:44:05] [config] type: transformer
+[2024-07-16 05:44:05] [config] ulr: false
+[2024-07-16 05:44:05] [config] ulr-dim-emb: 0
+[2024-07-16 05:44:05] [config] ulr-dropout: 0
+[2024-07-16 05:44:05] [config] ulr-keys-vectors: ""
+[2024-07-16 05:44:05] [config] ulr-query-vectors: ""
+[2024-07-16 05:44:05] [config] ulr-softmax-temperature: 1
+[2024-07-16 05:44:05] [config] ulr-trainable-transformation: false
+[2024-07-16 05:44:05] [config] unlikelihood-loss: false
+[2024-07-16 05:44:05] [config] valid-freq: 5000
+[2024-07-16 05:44:05] [config] valid-log: model.valid.log
+[2024-07-16 05:44:05] [config] valid-max-length: 1000
+[2024-07-16 05:44:05] [config] valid-metrics:
+[2024-07-16 05:44:05] [config]   - cross-entropy
+[2024-07-16 05:44:05] [config]   - perplexity
+[2024-07-16 05:44:05] [config]   - translation
+[2024-07-16 05:44:05] [config] valid-mini-batch: 32
+[2024-07-16 05:44:05] [config] valid-reset-all: false
+[2024-07-16 05:44:05] [config] valid-reset-stalled: false
+[2024-07-16 05:44:05] [config] valid-script-args:
+[2024-07-16 05:44:05] [config]   []
+[2024-07-16 05:44:05] [config] valid-script-path: ./validate.sh
+[2024-07-16 05:44:05] [config] valid-sets:
+[2024-07-16 05:44:05] [config]   - de_val.txt
+[2024-07-16 05:44:05] [config]   - sq_val.txt
+[2024-07-16 05:44:05] [config] valid-translation-output: ""
+[2024-07-16 05:44:05] [config] vocabs:
+[2024-07-16 05:44:05] [config]   - de-sq.model
+[2024-07-16 05:44:05] [config]   - de-sq.model
+[2024-07-16 05:44:05] [config] word-penalty: 0
+[2024-07-16 05:44:05] [config] word-scores: false
+[2024-07-16 05:44:05] [config] workspace: 5000
+[2024-07-16 05:44:05] [config] Model is being created with Marian v1.12.14 2d067afb 2024-02-16 11:44:13 -0500
+[2024-07-16 05:44:05] Using asynchronous training
+[2024-07-16 05:44:05] [comm] Compiled without MPI support. Running as a single process on srv540653
+[2024-07-16 05:44:05] Synced seed 1111
+[2024-07-16 05:44:05] [data] Loading vocabulary from text file de-sq.model
+[2024-07-16 05:44:05] [data] Setting vocabulary size for input 0 to 32,926
+[2024-07-16 05:44:05] [data] Loading vocabulary from text file de-sq.model
+[2024-07-16 05:44:05] [data] Setting vocabulary size for input 1 to 32,926
+[2024-07-16 05:44:05] [batching] Collecting statistics for batch fitting with step size 10
+[2024-07-16 05:44:05] [memory] Extending reserved space to 5120 MB (device cpu0)
+[2024-07-16 05:44:05] [memory] Extending reserved space to 5120 MB (device cpu1)
+[2024-07-16 05:44:05] [memory] Extending reserved space to 5120 MB (device cpu2)
+[2024-07-16 05:44:05] [memory] Extending reserved space to 5120 MB (device cpu3)
+[2024-07-16 05:44:05] [memory] Extending reserved space to 5120 MB (device cpu4)
+[2024-07-16 05:44:05] [memory] Extending reserved space to 5120 MB (device cpu5)
+[2024-07-16 05:44:05] [training] Using 6 CPUs
+[2024-07-16 05:44:05] [logits] Applying loss function for 1 factor(s)
+[2024-07-16 05:44:05] [memory] Reserving 232 MB, device cpu0
+[2024-07-16 05:44:32] [memory] Reserving 232 MB, device cpu0
+[2024-07-16 06:14:52] [batching] Done. Typical MB size is 4,544 target words
+[2024-07-16 06:14:53] [memory] Extending reserved space to 5120 MB (device cpu0)
+[2024-07-16 06:14:53] [memory] Extending reserved space to 5120 MB (device cpu1)
+[2024-07-16 06:14:53] [memory] Extending reserved space to 5120 MB (device cpu2)
+[2024-07-16 06:14:53] [memory] Extending reserved space to 5120 MB (device cpu3)
+[2024-07-16 06:14:53] [memory] Extending reserved space to 5120 MB (device cpu4)
+[2024-07-16 06:14:53] [memory] Extending reserved space to 5120 MB (device cpu5)
+[2024-07-16 06:14:53] [training] Using 6 CPUs
+[2024-07-16 06:14:53] Training started
+[2024-07-16 06:14:53] [data] Shuffling data
+[2024-07-16 06:14:53] [data] Done reading 1,706 sentences
+[2024-07-16 06:14:53] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 06:14:53] [memory] Reserving 232 MB, device cpu3
+[2024-07-16 06:14:53] [memory] Reserving 232 MB, device cpu0
+[2024-07-16 06:14:53] [memory] Reserving 232 MB, device cpu2
+[2024-07-16 06:14:53] [memory] Reserving 232 MB, device cpu1
+[2024-07-16 06:14:53] [memory] Reserving 232 MB, device cpu4
+[2024-07-16 06:14:53] [memory] Reserving 232 MB, device cpu5
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu0
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu1
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu2wandb: - 0.002 MB of 0.002 MB uploadedwandb: \ 0.002 MB of 0.002 MB uploadedwandb: | 0.002 MB of 0.002 MB uploadedwandb: / 0.002 MB of 0.024 MB uploadedwandb: - 0.002 MB of 0.024 MB uploadedwandb: \ 0.024 MB of 0.024 MB uploadedwandb:                                                                                
+wandb: 🚀 View run de-sq-translation at: https://wandb.ai/logoi-ai/marian-nmt/runs/no18xeyz
+wandb: ⭐️ View project at: https://wandb.ai/logoi-ai/marian-nmt
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240716_054404-no18xeyz/logs
+wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
+
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu3
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu4
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu5
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu0
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu1
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu2
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu3
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu4
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu5
+[2024-07-16 06:15:39] Parameter type float32, optimization type float32, casting types false
+[2024-07-16 06:15:39] Allocating memory for general optimizer shards
+[2024-07-16 06:15:39] [memory] Reserving 38 MB, device cpu0
+[2024-07-16 06:15:40] Allocating memory for Adam-specific shards
+[2024-07-16 06:15:40] [memory] Reserving 77 MB, device cpu0
+[2024-07-16 06:15:40] [memory] Reserving 38 MB, device cpu1
+[2024-07-16 06:15:40] [memory] Reserving 77 MB, device cpu1
+[2024-07-16 06:15:40] [memory] Reserving 38 MB, device cpu2
+[2024-07-16 06:15:40] [memory] Reserving 77 MB, device cpu2
+[2024-07-16 06:15:41] [2024-07-16 06:58:33] Seen 1,701 samples
+[2024-07-16 06:58:33] Starting data epoch 5 in logical epoch 5
+[2024-07-16 06:58:33] [data] Shuffling data
+[2024-07-16 06:58:33] [data] Done reading 1,706 sentences
+[2024-07-16 06:58:33] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 07:15:35] Seen 1,737 samples
+[2024-07-16 07:15:35] Starting data epoch 6 in logical epoch 6
+[2024-07-16 07:15:35] [data] Shuffling data
+[2024-07-16 07:15:36] [data] Done reading 1,706 sentences
+[2024-07-16 07:15:36] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 07:25:17] Seen 1,787 samples
+[2024-07-16 07:25:17] Starting data epoch 7 in logical epoch 7
+[2024-07-16 07:25:17] [data] Shuffling data
+[2024-07-16 07:25:18] [data] Done reading 1,706 sentences
+[2024-07-16 07:25:18] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 07:36:37] Seen 1,663 samples
+[2024-07-16 07:36:37] Starting data epoch 8 in logical epoch 8
+[2024-07-16 07:36:37] [data] Shuffling data
+[2024-07-16 07:36:37] [data] Done reading 1,706 sentences
+[2024-07-16 07:36:37] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 07:47:49] Seen 1,551 samples
+[2024-07-16 07:47:49] Starting data epoch 9 in logical epoch 9
+[2024-07-16 07:47:49] [data] Shuffling data
+[2024-07-16 07:47:49] [data] Done reading 1,706 sentences
+[2024-07-16 07:47:49] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 07:57:48] Seen 1,737 samples
+[2024-07-16 07:57:48] Starting data epoch 10 in logical epoch 10
+[2024-07-16 07:57:48] [data] Shuffling data
+[2024-07-16 07:57:48] [data] Done reading 1,706 sentences
+[2024-07-16 07:57:49] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 08:08:12] Seen 1,939 samples
+[2024-07-16 08:08:13] Starting data epoch 11 in logical epoch 11
+[2024-07-16 08:08:13] [data] Shuffling data
+[2024-07-16 08:08:13] [data] Done reading 1,706 sentences
+[2024-07-16 08:08:13] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 08:16:43] Seen 1,592 samples
+[2024-07-16 08:16:43] Starting data epoch 12 in logical epoch 12
+[2024-07-16 08:16:43] [data] Shuffling data
+[2024-07-16 08:16:43] [data] Done reading 1,706 sentences
+[2024-07-16 08:16:43] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 08:28:07] Seen 1,622 samples
+[2024-07-16 08:28:07] Starting data epoch 13 in logical epoch 13
+[2024-07-16 08:28:07] [data] Shuffling data
+[2024-07-16 08:28:08] [data] Done reading 1,706 sentences
+[2024-07-16 08:28:08] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 08:38:36] Seen 1,694 samples
+[2024-07-16 08:38:36] Starting data epoch 14 in logical epoch 14
+[2024-07-16 08:38:36] [data] Shuffling data
+[2024-07-16 08:38:37] [data] Done reading 1,706 sentences
+[2024-07-16 08:38:37] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 08:48:34] Seen 1,770 samples
+[2024-07-16 08:48:35] Starting data epoch 15 in logical epoch 15
+[2024-07-16 08:48:35] [data] Shuffling data
+[2024-07-16 08:48:35] [data] Done reading 1,706 sentences
+[2024-07-16 08:48:35] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 08:57:56] Seen 1,916 samples
+[2024-07-16 08:57:56] Starting data epoch 16 in logical epoch 16
+[2024-07-16 08:57:56] [data] Shuffling data
+[2024-07-16 08:57:56] [data] Done reading 1,706 sentences
+[2024-07-16 08:57:56] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 09:13:17] Seen 1,493 samples
+[2024-07-16 09:13:17] Starting data epoch 17 in logical epoch 17
+[2024-07-16 09:13:17] [data] Shuffling data
+[2024-07-16 09:13:17] [data] Done reading 1,706 sentences
+[2024-07-16 09:13:18] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 09:31:26] Seen 1,795 samples
+[2024-07-16 09:31:26] Starting data epoch 18 in logical epoch 18
+[2024-07-16 09:31:26] [data] Shuffling data
+[2024-07-16 09:31:26] [data] Done reading 1,706 sentences
+[2024-07-16 09:31:26] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 09:46:18] Seen 1,706 samples
+[2024-07-16 09:46:18] Starting data epoch 19 in logical epoch 19
+[2024-07-16 09:46:18] [data] Shuffling data
+[2024-07-16 09:46:18] [data] Done reading 1,706 sentences
+[2024-07-16 09:46:18] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 10:11:23] Seen 1,772 samples
+[2024-07-16 10:11:23] Starting data epoch 20 in logical epoch 20
+[2024-07-16 10:11:23] [data] Shuffling data
+[2024-07-16 10:11:24] [data] Done reading 1,706 sentences
+[2024-07-16 10:11:24] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 11:52:50] Seen 1,655 samples
+[2024-07-16 11:52:50] Starting data epoch 21 in logical epoch 21
+[2024-07-16 11:52:50] [data] Shuffling data
+[2024-07-16 11:52:51] [data] Done reading 1,706 sentences
+[2024-07-16 11:52:51] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-16 18:35:35] Seen 1,714 samples
+[2024-07-16 18:35:37] Starting data epoch 22 in logical epoch 22
+[2024-07-16 18:35:37] [data] Shuffling data
+[2024-07-16 18:35:48] [data] Done reading 1,706 sentences
+[2024-07-16 18:35:49] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-17 00:17:21] Seen 1,521 samples
+[2024-07-17 00:17:21] Starting data epoch 23 in logical epoch 23
+[2024-07-17 00:17:21] [data] Shuffling data
+[2024-07-17 00:17:22] [data] Done reading 1,706 sentences
+[2024-07-17 00:17:22] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-17 00:32:26] Seen 1,630 samples
+[2024-07-17 00:32:26] Starting data epoch 24 in logical epoch 24
+[2024-07-17 00:32:26] [data] Shuffling data
+[2024-07-17 00:32:26] [data] Done reading 1,706 sentences
+[2024-07-17 00:32:26] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-17 05:14:29] Seen 1,982 samples
+[2024-07-17 05:14:33] Starting data epoch 25 in logical epoch 25
+[2024-07-17 05:14:33] [data] Shuffling data
+[2024-07-17 05:14:49] [data] Done reading 1,706 sentences
+[2024-07-17 05:14:50] [data] Done shuffling 1,706 sentences to temp files
+[2024-07-17 13:54:42] Seen 1,532 samples
+[2024-07-17 13:54:44] Starting data epoch 26 in logical epoch 26
+[2024-07-17 13:54:44] [data] Shuffling data
+[2024-07-17 13:54:58] [data] Done reading 1,706 sentences
+[2024-07-17 13:54:59] [data] Done shuffling 1,706 sentences to temp files
+./train.sh: line 38: 2602493 Killed                  $MARIAN/marian --model model.npz --type transformer --train-sets $SRC_TRAIN $TGT_TRAIN --max-length 150 --vocabs $VOCAB $VOCAB --mini-batch-fit -w 5000 --maxi-batch 1000 --early-stopping 10 --valid-freq 5000 --save-freq 5000 --disp-freq 500 --valid-metrics cross-entropy perplexity translation --valid-sets $SRC_VAL $TGT_VAL --valid-script-path ./validate.sh --log model.log --valid-log model.valid.log --enc-depth 6 --dec-depth 6 --transformer-heads 8 --transformer-postprocess-emb d --transformer-postprocess dan --transformer-dropout 0.1 --label-smoothing 0.1 --learn-rate 0.0003 --lr-warmup 16000 --lr-decay-inv-sqrt 16000 --lr-report --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 --tied-embeddings-all --cpu-threads 6 --seed 1111 --exponential-smoothing
