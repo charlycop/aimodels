@@ -1,1 +1,1 @@
-
+Creating a Opus-MT based model (Marian), with pre-processing texts, saved in the _clean.txt files, after that taking 10% as training data and 90 % as validation data, saved as _train.txt and _valid.txt, shuffled and trained with the train.sh file.
