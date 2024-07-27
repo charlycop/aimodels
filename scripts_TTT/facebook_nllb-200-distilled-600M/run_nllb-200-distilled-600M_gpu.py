@@ -9,6 +9,7 @@ local_model_location = "../../Models/nllb-200-distilled-600M"
 huggingface_model = "facebook/nllb-200-distilled-600M"
 
 device = our_utils.find_gpu_type()
+print(device)
 
 # Create a loop that displays the menu and prompts the user for their choice
 while True:
@@ -44,7 +45,7 @@ while True:
     model = AutoModelForSeq2SeqLM.from_pretrained(actual_model)
 
     model.to(device)
-    model = pipeline('translation', tokenizer=tokenizer, src_lang='eng_Latn', tgt_lang='fra_Latn', max_length = 200, model=model)
+    model = pipeline('translation', tokenizer=tokenizer, src_lang='eng_Latn', tgt_lang='fra_Latn', max_length = 200, model=model, device=device)
 
     text="My name is Charly."
 
