@@ -9,7 +9,6 @@ local_model_location = "../../Models/nllb-200-distilled-600M"
 huggingface_model = "facebook/nllb-200-distilled-600M"
 
 device = our_utils.find_gpu_type()
-print(device)
 
 # Create a loop that displays the menu and prompts the user for their choice
 while True:
